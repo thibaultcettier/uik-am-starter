@@ -1,5 +1,18 @@
 <app-page-layout>
-  <div class="p-6">
-    <p>Welcome !</p>
+  <div class="app-catalog__container">
+    @if (loading) {
+      <p>Chargement des produits...</p>
+    } @else {
+      <div class="app-catalog__grid">
+        @for (product of products; track product.id) {
+          <app-card
+            [title]="product.name"
+            [productId]="product.id.toString()"
+            [imageUrl]="getImageUrl(product.image)"
+            [showDemoOverlay]="true">
+          </app-card>
+        }
+      </div>
+    }
   </div>
 </app-page-layout>
