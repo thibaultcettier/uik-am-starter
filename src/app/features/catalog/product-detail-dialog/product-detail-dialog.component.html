@@ -1,0 +1,62 @@
+<div class="product-detail">
+  <div class="product-detail__image">
+    <img [src]="product.image" [alt]="product.name" />
+  </div>
+
+  <div class="product-detail__body">
+    <div class="product-detail__header">
+      <div>
+        <h2 class="uik-h4">{{ product.name }}</h2>
+        <div class="product-detail__price uik-h5">
+          {{ product.price | currency: product.currency ?? 'EUR':'symbol':'1.0-0' }}
+        </div>
+      </div>
+      <button mat-icon-button aria-label="Fermer" (click)="close()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    @if (product.tags?.length) {
+      <mat-chip-set class="product-detail__chips">
+        @for (tag of product.tags; track tag) {
+          <mat-chip>{{ tag }}</mat-chip>
+        }
+      </mat-chip-set>
+    }
+
+    <p class="product-detail__description uik-body-small">
+      {{ product.description }}
+    </p>
+
+    <div class="product-detail__specs">
+      <div class="product-detail__specs-title uik-body-semibold">Spécifications</div>
+      <mat-divider></mat-divider>
+      <div class="product-detail__specs-grid">
+        @for (spec of product.specifications ?? []; track spec.label) {
+          <div class="product-detail__spec">
+            <span class="product-detail__spec-label uik-body-small">{{ spec.label }}</span>
+            <span class="product-detail__spec-value uik-body-semibold">{{ spec.value }}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="product-detail__meta">
+      <div class="product-detail__warranty uik-body-small">
+        <mat-icon>verified</mat-icon>
+        Garantie : {{ product.warranty ?? 'Non spécifiée' }}
+      </div>
+    </div>
+
+    <div class="product-detail__actions">
+      <mat-form-field appearance="outline" class="product-detail__quantity">
+        <mat-label>Quantité</mat-label>
+        <input matInput type="number" min="1" [formControl]="quantityControl"/>
+      </mat-form-field>
+      <button mat-flat-button color="primary" class="uik-body-semibold" (click)="addToCart()">
+        Ajouter au panier
+      </button>
+    </div>
+  </div>
+</div>
+

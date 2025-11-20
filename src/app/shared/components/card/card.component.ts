@@ -1,7 +1,9 @@
-import {Component, HostBinding, Input} from '@angular/core';
+import {Component, HostBinding, Input, inject} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import {Product} from '../../../interfaces/IProduct';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-card',
@@ -19,21 +21,42 @@ export class CardComponent {
   @Input() productId: string = '';
   @Input() imageUrl: string = '';
   @Input() showDemoOverlay: boolean = false;
+  @Input() product?: Product;
 
-  onAddToCart() {
-    console.log('Add to cart:', this.productId);
+  private readonly cartService = inject(CartService);
+
+  onAddToCart(event: MouseEvent) {
+    event.stopPropagation();
+    const product = this.ensureProduct();
+    this.cartService.addItem(product, 1);
   }
 
-  onFavorite() {
+  onFavorite(event: MouseEvent) {
+    event.stopPropagation();
     console.log('Favorite:', this.productId);
   }
 
-  onInfo() {
+  onInfo(event: MouseEvent) {
+    event.stopPropagation();
     console.log('Info:', this.productId);
   }
 
-  onMoreOptions() {
+  onMoreOptions(event: MouseEvent) {
+    event.stopPropagation();
     console.log('More options:', this.productId);
+  }
+
+  private ensureProduct(): Product {
+    if (this.product) {
+      return this.product;
+    }
+    return {
+      id: Number(this.productId),
+      name: this.title,
+      image: this.imageUrl,
+      price: 0,
+      currency: 'EUR'
+    };
   }
 }
 

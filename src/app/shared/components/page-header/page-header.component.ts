@@ -6,6 +6,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatToolbar} from '@angular/material/toolbar';
 import {MatIconButton} from '@angular/material/button';
 import {toSignal} from '@angular/core/rxjs-interop';
+import {CartService} from '../../services/cart.service';
 
 @Component({
   selector: 'app-page-header',
@@ -27,8 +28,10 @@ export class PageHeaderComponent {
 
   private readonly layoutBreakpointObserverService = inject(UikLayoutBreakpointObserverService);
   private readonly sidenavService = inject(UikSidenavService);
+  private readonly cartService = inject(CartService);
 
   layoutMatchesSmallViewport = toSignal(this.layoutBreakpointObserverService.matchesSmallViewport$);
+  cartCount = this.cartService.totalCount;
 
   toggleSidenav() {
     this.sidenavService.toggleSidenav();

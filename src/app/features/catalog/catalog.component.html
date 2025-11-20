@@ -62,10 +62,13 @@
           <div class="app-catalog__grid">
             @for (product of products; track product.id) {
               <app-card
+                class="app-catalog__card"
                 [title]="product.name"
                 [productId]="product.id.toString()"
                 [imageUrl]="getImageUrl(product.image)"
-                [showDemoOverlay]="true">
+                [product]="product"
+                [showDemoOverlay]="true"
+                (click)="openProductDetail(product)">
               </app-card>
             }
           </div>

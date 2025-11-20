@@ -24,17 +24,17 @@
   </mat-card-content>
 
   <mat-card-actions class="app-card__actions">
-    <button mat-button class="app-card__action-button" (click)="onAddToCart()">
+    <button mat-button class="app-card__action-button" (click)="onAddToCart($event)">
       <img src="/assets/img/shopping_cart.svg" alt="shopping cart" class="app-card__action-icon-img" />
       <span class="app-card__action-icon-text uik-body-semibold">Add to cart</span>
     </button>
-    <button mat-icon-button class="app-card__action-icon" (click)="onFavorite()" aria-label="Add to favorites">
+    <button mat-icon-button class="app-card__action-icon" (click)="onFavorite($event)" aria-label="Add to favorites">
       <mat-icon>star</mat-icon>
     </button>
-    <button mat-icon-button class="app-card__action-icon" (click)="onInfo()" aria-label="Product information">
+    <button mat-icon-button class="app-card__action-icon" (click)="onInfo($event)" aria-label="Product information">
       <mat-icon>info</mat-icon>
     </button>
-    <button mat-icon-button class="app-card__action-icon" (click)="onMoreOptions()" aria-label="More options">
+    <button mat-icon-button class="app-card__action-icon" (click)="onMoreOptions($event)" aria-label="More options">
       <mat-icon>more_vert</mat-icon>
     </button>
   </mat-card-actions>

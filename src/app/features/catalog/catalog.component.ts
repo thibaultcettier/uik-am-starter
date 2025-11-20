@@ -13,8 +13,10 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatDialog} from '@angular/material/dialog';
 import {Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
+import {ProductDetailDialogComponent} from './product-detail-dialog/product-detail-dialog.component';
 
 @Component({
   selector: 'app-catalog',
@@ -38,6 +40,7 @@ export class CatalogComponent implements OnInit, OnDestroy {
   @HostBinding('class') class = 'app-catalog';
 
   private readonly http = inject(HttpClient);
+  private readonly dialog = inject(MatDialog);
   private readonly destroy$ = new Subject<void>();
 
   allProducts: Product[] = [];
@@ -124,6 +127,18 @@ export class CatalogComponent implements OnInit, OnDestroy {
     this.pageIndex = event.pageIndex;
     this.pageSize = event.pageSize;
     this.updateDisplayedProducts();
+  }
+
+  openProductDetail(product: Product) {
+    const productData = {
+      ...product,
+      image: this.getImageUrl(product.image)
+    };
+    this.dialog.open(ProductDetailDialogComponent, {
+      data: productData,
+      width: '960px',
+      panelClass: 'app-product-detail-dialog'
+    });
   }
 
   getImageUrl(imagePath: string): string {

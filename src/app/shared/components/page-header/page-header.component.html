@@ -18,7 +18,14 @@
     <button mat-icon-button aria-label="Favorites">
       <mat-icon>star</mat-icon>
     </button>
-    <button mat-icon-button aria-label="Cart">
+    <button
+      mat-icon-button
+      aria-label="Cart"
+      [matBadge]="cartCount()"
+      matBadgeColor="accent"
+      matBadgeSize="small"
+      [matBadgeHidden]="cartCount() === 0"
+      [matBadgeOverlap]="false">
       <mat-icon>shopping_cart</mat-icon>
     </button>
     <button mat-icon-button aria-label="Help">
