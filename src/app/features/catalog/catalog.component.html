@@ -1,17 +1,62 @@
 <app-page-layout headerTitle="ZBL Industries" headerSubtitle="Product catalog">
   <div class="app-catalog__container">
+      <div class="app-catalog__controls">
+        <div class="app-catalog__controls-left">
+          <mat-form-field appearance="outline" class="app-catalog__search-field">
+            <mat-icon matPrefix>filter_alt</mat-icon>
+            <input matInput placeholder="Filtrer" [formControl]="searchControl" />
+          </mat-form-field>
+        </div>
+      <div class="app-catalog__controls-right">
+        <span class="app-catalog__count uik-body-small">
+          @if (loading) {
+            Chargement...
+          } @else {
+            {{ totalItems }} produits
+          }
+        </span>
+        <mat-button-toggle-group
+          class="app-catalog__view-toggle"
+          value="grid">
+          <mat-button-toggle value="grid" aria-label="Vue grille">
+            <mat-icon>grid_view</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle value="list" aria-label="Vue liste">
+            <mat-icon>view_list</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+    </div>
+
     @if (loading) {
-      <p>Chargement des produits...</p>
+      <div class="app-catalog__empty uik-body-semibold">Chargement des produits...</div>
+    } @else if (products.length === 0) {
+      <div class="app-catalog__empty uik-body-semibold">Aucun produit ne correspond à cette recherche.</div>
     } @else {
-      <div class="app-catalog__grid">
-        @for (product of products; track product.id) {
-          <app-card
-            [title]="product.name"
-            [productId]="product.id.toString()"
-            [imageUrl]="getImageUrl(product.image)"
-            [showDemoOverlay]="true">
-          </app-card>
-        }
+      <div class="app-catalog__grid-shell">
+        <div class="app-catalog__grid-wrapper">
+          <div class="app-catalog__grid">
+            @for (product of products; track product.id) {
+              <app-card
+                [title]="product.name"
+                [productId]="product.id.toString()"
+                [imageUrl]="getImageUrl(product.image)"
+                [showDemoOverlay]="true">
+              </app-card>
+            }
+          </div>
+        </div>
+      </div>
+
+      <div class="app-catalog__paginator-container">
+        <mat-paginator
+          class="app-catalog__paginator"
+          [length]="totalItems"
+          [pageIndex]="pageIndex"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          (page)="onPageChange($event)">
+        </mat-paginator>
       </div>
     }
   </div>

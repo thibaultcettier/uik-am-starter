@@ -2,22 +2,176 @@
 
 .app-catalog {
   --standard-gap: 1.5rem;
+  --card-height: 400px;
 
   &__container {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex: 1;
+    gap: 1.5rem;
+    background-color: colors.$grey-bg;
+    position: relative;
+    min-height: -webkit-fill-available;
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background-color: white;
+    border-radius: 15px;
+    padding: 5px;
+  }
+
+  &__controls-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    mat-form-field{
+      border-color:#eeeff8;
+      background-color: #eeeff8;;
+      border-radius: 15px;
+      padding: 5px;
+    }
+  }
+
+  &__filter-btn {
+    border-radius: 999px;
+    text-transform: none;
+    font-weight: 600;
+    padding-inline: 1.25rem;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+
+    mat-icon {
+      font-size: 20px;
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__search-field {
+    width: min(360px, 100%);
+  }
+
+  &__controls-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    mat-button-toggle-group{
+      height: auto;
+      background-color: #eeeff8;
+    }
+  }
+
+  &__count {
+    font-weight: 600;
+    color: colors.$text-low;
+  }
+
+  &__view-toggle {
+    background: #fff;
+    border-radius: 999px;
+
+    .mat-button-toggle-button {
+      padding: 0.2rem 0.75rem;
+    }
+  }
+
+  &__grid-shell {
+    position: relative;
+  }
+
+  &__multi-select {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 2;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  }
+
+  &__grid-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
     overflow: hidden;
+    padding-top: 1.5rem;
   }
 
   &__grid {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(331px, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-auto-rows: var(--card-height);
     gap: var(--standard-gap);
-    overflow: auto;
-    flex: 1;
     padding-bottom: var(--standard-gap);
+  }
+
+  &__empty {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: colors.$text-low;
+    min-height: 240px;
+    border: 1px dashed rgba(0, 0, 0, 0.1);
+    border-radius: 0.75rem;
+    background-color: #fff;
+  }
+
+  &__paginator-container {
+    width: 100%;
+    padding-top: 1rem;
+  }
+
+  &__paginator {
+    width: 100%;
+    border-radius: 1rem;
+    background: #fff;
+    padding: 0 1.5rem;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  }
+
+  @media (max-width: 1400px) {
+    &__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 1100px) {
+    &__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__controls {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    &__controls-left {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &__grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+
+    &__paginator-container {
+      position: static;
+      justify-content: center;
+      background: none;
+    }
   }
 }
 

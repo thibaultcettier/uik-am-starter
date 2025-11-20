@@ -19,14 +19,14 @@
   </div>
 
   <mat-card-content class="app-card__content">
-    <h3 class="app-card__title">{{ title }}</h3>
-    <p class="app-card__product-id">{{ productId }}</p>
+    <h3 class="app-card__title uik-h6">{{ title }}</h3>
+    <p class="app-card__product-id uik-body-small">{{ productId }}</p>
   </mat-card-content>
 
   <mat-card-actions class="app-card__actions">
     <button mat-button class="app-card__action-button" (click)="onAddToCart()">
       <img src="/assets/img/shopping_cart.svg" alt="shopping cart" class="app-card__action-icon-img" />
-      <span class="app-card__action-icon-text">Add to cart</span>
+      <span class="app-card__action-icon-text uik-body-semibold">Add to cart</span>
     </button>
     <button mat-icon-button class="app-card__action-icon" (click)="onFavorite()" aria-label="Add to favorites">
       <mat-icon>star</mat-icon>

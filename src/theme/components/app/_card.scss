@@ -2,8 +2,9 @@
 
 .app-card {
   display: block;
-  width:331px;
-  height: 420px;
+  width: 100%;
+  height: 100%;
+  min-height: 360px;
 
   &__container {
     display: flex;
@@ -12,12 +13,15 @@
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
   }
 
   &__image-wrapper {
     position: relative;
     width: 100%;
-    height: 280px;
+    height: 230px;
     flex-shrink: 0;
     background-color: #fff;
     overflow: hidden;
@@ -32,50 +36,60 @@
 
   &__overlay {
     position: absolute;
-    top: 50%;
+    top: 0;
     right: 0;
+    width: 40%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
-    padding: 0 65px 0 0;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
   }
 
   &__overlay-content {
-    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-transform: uppercase;
+    color: #fff;
+    gap: 0.2rem;
+  }
+
+  &__overlay-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
   }
 
   &__overlay-logo {
-    width: 17px;
+    width: 24px;
+    height: auto;
   }
 
   &__overlay-title {
-    padding-left:5px;
-    color: white;
+    font-size: 1rem;
     font-weight: 600;
-    font-size: 15px;
   }
 
   &__overlay-subtitle {
-    font-size: 0.5rem;
-    font-weight: 400;
-    padding-left: 65%;
-    color:white;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
   }
 
   &__content {
     padding: 1rem;
     flex-shrink: 0;
-  }
 
-  &__title {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.25rem;
-    font-weight: 600;
-  }
+    .app-card__title {
+      margin: 0 0 0.35rem 0;
+    }
 
-  &__product-id {
-    margin: 0;
-    font-size: 0.875rem;
-    color: rgba(0, 0, 0, 0.6);
+    .app-card__product-id {
+      margin: 0;
+      color: rgba(0, 0, 0, 0.6);
+    }
   }
 
   &__actions {
@@ -92,11 +106,6 @@
     align-items: center;
     gap: 0.5rem;
     color: #951cff; // TODO: Use theme variable
-    font-weight: 600;
-  }
-
-  &__action-icon-text {
-    color: #9c27b0; // TODO: Use theme variable
   }
 
   &__action-icon-img {
