@@ -49,6 +49,7 @@ export class CatalogComponent implements OnInit, OnDestroy {
   pageSize = 10;
   pageSizeOptions = [10, 20, 30];
   searchControl = new FormControl('', {nonNullable: true});
+  readonly skeletonPlaceholders = Array.from({length: 10}, (_, index) => index);
 
   ngOnInit() {
     this.setupSearchListener();

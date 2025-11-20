@@ -29,7 +29,31 @@
     </div>
 
     @if (loading) {
-      <div class="app-catalog__empty uik-body-semibold">Chargement des produits...</div>
+      <div class="app-catalog__grid-shell">
+        <div class="app-catalog__grid-wrapper">
+          <div class="app-catalog__grid">
+            @for (placeholder of skeletonPlaceholders; track placeholder) {
+              <div class="app-card app-card--ghost">
+                <uik-ghosts animation="shimmer">
+                  <div class="app-card__ghost-image">
+                    <uik-ghost shape="rectangle" width="100%" height="100%"></uik-ghost>
+                  </div>
+                  <div class="app-card__ghost-content">
+                    <uik-ghost shape="rectangle" width="70%" height="16px"></uik-ghost>
+                    <uik-ghost shape="rectangle" width="45%" height="12px"></uik-ghost>
+                  </div>
+                  <div class="app-card__ghost-actions">
+                    <uik-ghost shape="rectangle" width="120px" height="32px"></uik-ghost>
+                    <uik-ghost shape="circle" width="32px" height="32px"></uik-ghost>
+                    <uik-ghost shape="circle" width="32px" height="32px"></uik-ghost>
+                    <uik-ghost shape="circle" width="32px" height="32px"></uik-ghost>
+                  </div>
+                </uik-ghosts>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
     } @else if (products.length === 0) {
       <div class="app-catalog__empty uik-body-semibold">Aucun produit ne correspond à cette recherche.</div>
     } @else {
