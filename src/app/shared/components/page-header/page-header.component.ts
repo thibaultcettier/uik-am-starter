@@ -1,4 +1,4 @@
-import {Component, HostBinding, inject} from '@angular/core';
+import {Component, HostBinding, inject, Input} from '@angular/core';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {UikAmModule, UikLayoutBreakpointObserverService, UikSidenavService} from "@visiativ/uik-am";
 import {MatIcon} from "@angular/material/icon";
@@ -21,6 +21,7 @@ import {toSignal} from '@angular/core/rxjs-interop';
 })
 export class PageHeaderComponent {
   @HostBinding('class') class = 'app-page-header';
+  @Input() title = 'ZBL Industries';
 
   private readonly layoutBreakpointObserverService = inject(UikLayoutBreakpointObserverService);
   private readonly sidenavService = inject(UikSidenavService);

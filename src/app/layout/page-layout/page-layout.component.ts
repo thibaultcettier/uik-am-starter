@@ -1,4 +1,4 @@
-import {Component, HostBinding, inject, OnInit} from '@angular/core';
+import {Component, HostBinding, inject, Input, OnInit} from '@angular/core';
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {UikAmModule, UikSidenavLayout, UikSidenavService} from "@visiativ/uik-am";
 import {takeUntilDestroyed, toSignal} from "@angular/core/rxjs-interop";
@@ -19,6 +19,7 @@ export class PageLayoutComponent implements OnInit {
   private readonly uikSidenavService = inject(UikSidenavService);
 
   @HostBinding('class') class = 'app-main-layout';
+  @Input() headerTitle = 'ZBL Industries';
 
   sidenavLayout = toSignal(this.uikSidenavService.sidenavLayout$);
 

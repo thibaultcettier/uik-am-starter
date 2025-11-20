@@ -1,14 +1,9 @@
 @use "@visiativ/uik-core/theme/variables/colors" as colors;
 
-app-card {
-  width: 331px;
-  height: 378px;
-}
-
 .app-card {
   display: block;
-  width: 100%;
-  height: 100%;
+  width:331px;
+  height: 420px;
 
   &__container {
     display: flex;
@@ -39,28 +34,31 @@ app-card {
     position: absolute;
     top: 50%;
     right: 0;
-    width: 40%;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 0 65px 0 0;
   }
 
-  &__overlay-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
+  &__overlay-content {
+    padding: 5px;
+  }
+
+  &__overlay-logo {
+    width: 17px;
   }
 
   &__overlay-title {
-    font-size: 1.5rem;
+    padding-left:5px;
+    color: white;
     font-weight: 600;
+    font-size: 15px;
   }
 
   &__overlay-subtitle {
-    font-size: 0.875rem;
+    font-size: 0.5rem;
     font-weight: 400;
+    padding-left: 65%;
+    color:white;
   }
 
   &__content {
@@ -93,19 +91,18 @@ app-card {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #9c27b0; // TODO: Use theme variable
-    
-    mat-icon {
-      color: #9c27b0;
-    }
+    color: #951cff; // TODO: Use theme variable
+    font-weight: 600;
   }
 
-  &__action-icon {
+  &__action-icon-text {
     color: #9c27b0; // TODO: Use theme variable
-    
-    mat-icon {
-      color: #9c27b0;
-    }
+  }
+
+  &__action-icon-img {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
   }
 }
 

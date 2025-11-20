@@ -3,8 +3,15 @@
     <img [src]="imageUrl" [alt]="title" class="app-card__image" />
     @if (showDemoOverlay) {
       <div class="app-card__overlay">
-        <div class="app-card__overlay-text">
-          <span class="app-card__overlay-title">visiativ</span>
+        <div class="app-card__overlay-content">
+          <div class="app-card__overlay-header">
+            <img
+              alt="logo"
+              class="app-card__overlay-logo uik-brand-logo"
+              src="/assets/img/logo.svg"
+            />
+            <span class="app-card__overlay-title">visiativ</span>
+          </div>
           <span class="app-card__overlay-subtitle">Demo</span>
         </div>
       </div>
@@ -18,8 +25,8 @@
 
   <mat-card-actions class="app-card__actions">
     <button mat-button class="app-card__action-button" (click)="onAddToCart()">
-      <mat-icon>shopping_cart</mat-icon>
-      <span>Add to cart</span>
+      <img src="/assets/img/shopping_cart.svg" alt="shopping cart" class="app-card__action-icon-img" />
+      <span class="app-card__action-icon-text">Add to cart</span>
     </button>
     <button mat-icon-button class="app-card__action-icon" (click)="onFavorite()" aria-label="Add to favorites">
       <mat-icon>star</mat-icon>
