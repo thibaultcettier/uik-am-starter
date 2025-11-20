@@ -20,6 +20,7 @@ export class PageLayoutComponent implements OnInit {
 
   @HostBinding('class') class = 'app-main-layout';
   @Input() headerTitle = 'ZBL Industries';
+  @Input() headerSubtitle?: string;
 
   sidenavLayout = toSignal(this.uikSidenavService.sidenavLayout$);
 

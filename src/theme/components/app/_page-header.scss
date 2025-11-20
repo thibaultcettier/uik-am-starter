@@ -1,0 +1,73 @@
+.app-page-header {
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    gap: 1rem;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #111;
+  }
+
+  &__subtitle {
+    font-size: 0.9rem;
+    color: rgba(17, 17, 17, 0.7);
+  }
+
+  &__spacer {
+    flex: 1;
+  }
+
+  &__actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__header-user{
+    padding: 3px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  &__user {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 999px;
+    padding-inline: 0.75rem 1rem;
+    text-transform: none;
+    mat-icon {
+      font-size: 20px;
+      color: rgba(17, 17, 17, 0.7);
+    }
+  }
+
+  &__user-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #a855f7;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  &__user-name {
+    margin-left: 5px;
+    font-weight: 500;
+    color: #111;
+  }
+}
+
