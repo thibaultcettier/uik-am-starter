@@ -25,12 +25,10 @@
       <mat-icon>help_outline</mat-icon>
     </button>
 
-    <button mat-stroked-button class="app-page-header__user">
-      <div class="app-page-header__user-content">
-        <span class="app-page-header__user-avatar">{{ userInitials }}</span>
-        <span class="app-page-header__user-name">{{ userName }}</span>
-      </div>
-      <mat-icon>expand_more</mat-icon>
-    </button>
+    <uik-user-profile-button
+      class="app-page-header__user"
+      [label]="userName"
+      [fullName]="userName">
+    </uik-user-profile-button>
   </div>
 </mat-toolbar>
