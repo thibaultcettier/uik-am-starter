@@ -30,5 +30,29 @@ export class CartService {
       return [...items, {product, quantity: qty}];
     });
   }
+
+  updateQuantity(productId: number, quantity: number): void {
+    if (quantity <= 0) {
+      this.removeItem(productId);
+      return;
+    }
+    this.itemsSignal.update(items =>
+      items.map(item =>
+        item.product.id === productId
+          ? {...item, quantity}
+          : item
+      )
+    );
+  }
+
+  removeItem(productId: number): void {
+    this.itemsSignal.update(items =>
+      items.filter(item => item.product.id !== productId)
+    );
+  }
+
+  clear(): void {
+    this.itemsSignal.set([]);
+  }
 }
 

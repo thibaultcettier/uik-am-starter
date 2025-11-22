@@ -1,0 +1,85 @@
+<app-page-layout headerTitle="Your Basket">
+  <div class="app-basket__container">
+    @if (!hasItems) {
+      <div class="app-basket__empty uik-body-semibold">
+        Your basket is empty.
+      </div>
+    } @else {
+      <div class="app-basket__items">
+        @for (item of cartItems; track item.product.id) {
+          <mat-card class="app-basket__item">
+            <div class="app-basket__item-content">
+              <div class="app-basket__item-image">
+                <img [src]="getImageUrl(item.product.image)" [alt]="item.product.name" />
+              </div>
+
+              <div class="app-basket__item-details">
+                <div class="app-basket__item-header">
+                  <h3 class="uik-h5">{{ item.product.name }}</h3>
+                </div>
+
+                @if (item.product.tags?.length) {
+                  <mat-chip-set class="app-basket__item-tags">
+                    @for (tag of item.product.tags; track tag) {
+                      <mat-chip>{{ tag }}</mat-chip>
+                    }
+                  </mat-chip-set>
+                }
+
+                @if (item.product.description) {
+                  <p class="app-basket__item-description uik-body-small">
+                    {{ item.product.description }}
+                  </p>
+                }
+
+                <div class="app-basket__item-delivery uik-body-small">
+                  FREE Delivery October 11, 2024
+                </div>
+
+                @if (item.product.offer || item.product.discount) {
+                  <div class="app-basket__item-offer">
+                    @if (item.product.offer) {
+                      <button mat-stroked-button color="warn" class="app-basket__offer-button">
+                        {{ item.product.offer }}
+                      </button>
+                    }
+                    @if (item.product.discount) {
+                      <span class="app-basket__item-discount uik-body-semibold">
+                        {{ item.product.discount }}
+                      </span>
+                    }
+                  </div>
+                }
+
+                <div class="app-basket__item-price uik-h5">
+                  {{ item.product.price | currency: item.product.currency ?? 'EUR':'symbol':'1.0-0' }}
+                </div>
+
+                <div class="app-basket__item-actions">
+                  <mat-form-field appearance="outline" class="app-basket__quantity">
+                    <mat-label>Quantity</mat-label>
+                    <mat-select [value]="item.quantity" (valueChange)="updateQuantity(item, $event)">
+                      @for (i of [1,2,3,4,5,6,7,8,9,10]; track i) {
+                        <mat-option [value]="i">{{ i }}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                  <button mat-icon-button aria-label="Delete" (click)="removeItem(item)" class="app-basket__delete">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        }
+      </div>
+
+      <div class="app-basket__footer">
+        <button mat-flat-button color="primary" class="uik-body-semibold app-basket__order-button" (click)="placeOrder()">
+          Place the order
+        </button>
+      </div>
+    }
+  </div>
+</app-page-layout>
+

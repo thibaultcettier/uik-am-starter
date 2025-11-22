@@ -25,7 +25,8 @@
       matBadgeColor="accent"
       matBadgeSize="small"
       [matBadgeHidden]="cartCount() === 0"
-      [matBadgeOverlap]="false">
+      [matBadgeOverlap]="false"
+      (click)="navigateToCart()">
       <mat-icon>shopping_cart</mat-icon>
     </button>
     <button mat-icon-button aria-label="Help">
