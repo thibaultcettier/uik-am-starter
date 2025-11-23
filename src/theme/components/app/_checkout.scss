@@ -1,0 +1,89 @@
+@use "@visiativ/uik-core/theme/variables/colors" as colors;
+
+.app-checkout {
+  &__container {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: colors.$grey-bg;
+    min-height: -webkit-fill-available;
+  }
+
+  &__card {
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  &__section {
+    margin-bottom: 2rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section-title {
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  &__fields {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__field {
+    width: 100%;
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1rem;
+    margin-top: 2rem;
+  }
+
+  &__submit {
+    text-transform: none;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+  }
+
+  &__phone-prefix {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 0.5rem;
+    padding-right: 0.5rem;
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+  }
+
+  &__phone-flag {
+    font-size: 1.2rem;
+  }
+
+  &__phone-code {
+    font-size: 0.875rem;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__phone-input {
+    padding-left: 0;
+  }
+}
+

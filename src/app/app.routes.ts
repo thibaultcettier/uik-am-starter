@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 import {MainLayoutComponent} from './layout/main-layout/main-layout.component';
 import {CatalogComponent} from './features/catalog/catalog.component';
 import {BasketComponent} from './features/basket/basket.component';
+import {CheckoutComponent} from './features/basket/checkout/checkout.component';
 
 export const routes: Routes = [
   {
@@ -9,6 +10,7 @@ export const routes: Routes = [
       {path: '', redirectTo: 'home', pathMatch: 'full'},
       {path: 'home', component: CatalogComponent},
       {path: 'basket', component: BasketComponent},
+      {path: 'checkout', component: CheckoutComponent},
     ]
   }
 ];

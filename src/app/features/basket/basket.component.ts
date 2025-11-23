@@ -32,6 +32,7 @@ export class BasketComponent {
   @HostBinding('class') class = 'app-basket';
 
   private readonly cartService = inject(CartService);
+  private readonly router = inject(Router);
 
   get cartItems(): CartItem[] {
     return this.cartService.items;
@@ -50,8 +51,7 @@ export class BasketComponent {
   }
 
   placeOrder(): void {
-    // TODO: Implement order placement
-    console.log('Place order');
+    this.router.navigate(['/checkout']);
   }
 
   getImageUrl(imagePath: string): string {
