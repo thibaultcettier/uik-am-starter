@@ -1,15 +1,12 @@
 <div class="product-detail">
   <div class="product-detail__image">
-    <img [src]="product.image" [alt]="product.name" />
+    <img [src]="product.image" [alt]="product.name" loading="eager" />
   </div>
 
   <div class="product-detail__body">
     <div class="product-detail__header">
       <div>
         <h2 class="uik-h4">{{ product.name }}</h2>
-        <div class="product-detail__price uik-h5">
-          {{ product.price | currency: product.currency ?? 'EUR':'symbol':'1.0-0' }}
-        </div>
       </div>
       <button mat-icon-button aria-label="Fermer" (click)="close()">
         <mat-icon>close</mat-icon>
@@ -28,33 +25,52 @@
       {{ product.description }}
     </p>
 
-    <div class="product-detail__specs">
-      <div class="product-detail__specs-title uik-body-semibold">Spécifications</div>
-      <mat-divider></mat-divider>
-      <div class="product-detail__specs-grid">
-        @for (spec of product.specifications ?? []; track spec.label) {
+    @if (product.warranty) {
+      <div class="product-detail__warranty uik-body-small">
+        Warranty: {{ product.warranty }}
+      </div>
+    }
+
+    @if (product.specifications?.length) {
+      <div class="product-detail__specs">
+        @for (spec of product.specifications; track spec.label) {
           <div class="product-detail__spec">
-            <span class="product-detail__spec-label uik-body-small">{{ spec.label }}</span>
-            <span class="product-detail__spec-value uik-body-semibold">{{ spec.value }}</span>
+            <span class="product-detail__spec-label uik-body-semibold">{{ spec.label }}</span>
+            <span class="product-detail__spec-value uik-body-small">{{ spec.value }}</span>
           </div>
         }
       </div>
-    </div>
+    }
 
-    <div class="product-detail__meta">
-      <div class="product-detail__warranty uik-body-small">
-        <mat-icon>verified</mat-icon>
-        Garantie : {{ product.warranty ?? 'Non spécifiée' }}
+    @if (product.offer) {
+      <div class="product-detail__offer">
+        <button mat-stroked-button color="warn" class="product-detail__offer-button">
+          {{ product.offer }}
+        </button>
+      </div>
+    }
+
+    <div class="product-detail__price-section">
+      @if (product.discount) {
+        <span class="product-detail__discount uik-body-semibold">{{ product.discount }}</span>
+      }
+      <div class="product-detail__price uik-h5">
+        {{ product.price | currency: product.currency ?? 'EUR':'symbol':'1.0-0' }}
       </div>
     </div>
 
     <div class="product-detail__actions">
       <mat-form-field appearance="outline" class="product-detail__quantity">
-        <mat-label>Quantité</mat-label>
-        <input matInput type="number" min="1" [formControl]="quantityControl"/>
+        <mat-label>Quantity</mat-label>
+        <mat-select [formControl]="quantityControl">
+          @for (i of [1,2,3,4,5,6,7,8,9,10]; track i) {
+            <mat-option [value]="i">{{ i }}</mat-option>
+          }
+        </mat-select>
       </mat-form-field>
       <button mat-flat-button color="primary" class="uik-body-semibold" (click)="addToCart()">
-        Ajouter au panier
+        <mat-icon>shopping_cart</mat-icon>
+        Add to cart
       </button>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <mat-card class="app-card__container">
   <div class="app-card__image-wrapper">
-    <img [src]="imageUrl" [alt]="title" class="app-card__image" />
+    <img [src]="imageUrl" [alt]="title" class="app-card__image" loading="lazy" />
     @if (showDemoOverlay) {
       <div class="app-card__overlay">
         <div class="app-card__overlay-content">

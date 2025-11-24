@@ -31,6 +31,16 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+
+    span{
+      &.mat-badge-content{
+        background-color: #951CFF;
+      }
+
+      &.uik-avatar-label-container{
+        background-color: #BF56FB;
+      }
+    }
   }
 
   &__user {

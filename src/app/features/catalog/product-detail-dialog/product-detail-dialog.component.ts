@@ -8,6 +8,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatSelectModule} from '@angular/material/select';
 import {ReactiveFormsModule, FormControl} from '@angular/forms';
 import {CartService} from '../../../shared/services/cart.service';
 
@@ -26,6 +27,7 @@ import {CartService} from '../../../shared/services/cart.service';
     MatDividerModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSelectModule,
     ReactiveFormsModule,
     NgClass,
   ],

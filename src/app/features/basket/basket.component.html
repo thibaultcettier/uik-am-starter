@@ -10,7 +10,7 @@
           <mat-card class="app-basket__item">
             <div class="app-basket__item-content">
               <div class="app-basket__item-image">
-                <img [src]="getImageUrl(item.product.image)" [alt]="item.product.name" />
+                <img [src]="getImageUrl(item.product.image)" [alt]="item.product.name" loading="lazy" />
               </div>
 
               <div class="app-basket__item-details">
