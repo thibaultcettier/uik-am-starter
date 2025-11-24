@@ -125,10 +125,14 @@
       flex-direction: column;
       height: 100%;
     }
+
+    uik-ghost {
+      display: block;
+    }
   }
 
   &__ghost-image {
-    height: 230px;
+    height: 100%;
     width: 100%;
     overflow: hidden;
   }
