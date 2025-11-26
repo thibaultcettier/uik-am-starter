@@ -1,5 +1,12 @@
 <mat-card class="app-card__container">
   <div class="app-card__image-wrapper">
+    <mat-checkbox
+      class="app-card__checkbox"
+      [class.app-card__checkbox--hidden]="!isSelected"
+      [checked]="isSelected"
+      (change)="onCheckboxChange($event)"
+      (click)="$event.stopPropagation()">
+    </mat-checkbox>
     <img [src]="imageUrl" [alt]="title" class="app-card__image" loading="lazy" />
     @if (showDemoOverlay) {
       <div class="app-card__overlay">
@@ -34,9 +41,19 @@
     <button mat-icon-button class="app-card__action-icon" (click)="onInfo($event)" aria-label="Product information">
       <mat-icon>info</mat-icon>
     </button>
-    <button mat-icon-button class="app-card__action-icon" (click)="onMoreOptions($event)" aria-label="More options">
+    <button mat-icon-button class="app-card__action-icon" [matMenuTriggerFor]="menu" (click)="onMoreOptions($event)" aria-label="More options">
       <mat-icon>more_vert</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="onSelectThisProduct($event)">
+        <mat-icon>check_box</mat-icon>
+        <span>Select this product</span>
+      </button>
+      <button mat-menu-item (click)="onOpenDetails($event)">
+        <mat-icon>info</mat-icon>
+        <span>Open details</span>
+      </button>
+    </mat-menu>
   </mat-card-actions>
 </mat-card>
 

@@ -17,6 +17,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {Subject} from 'rxjs';
 import {debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
 import {ProductDetailDialogComponent} from './product-detail-dialog/product-detail-dialog.component';
+import {CartService} from '../../shared/services/cart.service';
+import {SelectionBarComponent} from './selection-bar/selection-bar.component';
 
 @Component({
   selector: 'app-catalog',
@@ -33,6 +35,7 @@ import {ProductDetailDialogComponent} from './product-detail-dialog/product-deta
     MatIconModule,
     MatPaginatorModule,
     MatButtonToggleModule,
+    SelectionBarComponent,
   ],
   templateUrl: './catalog.component.html',
 })
@@ -41,6 +44,7 @@ export class CatalogComponent implements OnInit, OnDestroy {
 
   private readonly http = inject(HttpClient);
   private readonly dialog = inject(MatDialog);
+  private readonly cartService = inject(CartService);
   private readonly destroy$ = new Subject<void>();
 
   allProducts: Product[] = [];
@@ -53,6 +57,7 @@ export class CatalogComponent implements OnInit, OnDestroy {
   pageSizeOptions = [10, 20, 30];
   searchControl = new FormControl('', {nonNullable: true});
   readonly skeletonPlaceholders = Array.from({length: 10}, (_, index) => index);
+  selectedProductIds = new Set<number>();
 
   ngOnInit() {
     this.setupSearchListener();
@@ -143,5 +148,42 @@ export class CatalogComponent implements OnInit, OnDestroy {
 
   getImageUrl(imagePath: string): string {
     return `/api${imagePath}`;
+  }
+
+  isProductSelected(productId: number): boolean {
+    return this.selectedProductIds.has(productId);
+  }
+
+  onSelectProduct(product: Product) {
+    if (this.selectedProductIds.has(product.id)) {
+      this.selectedProductIds.delete(product.id);
+    } else {
+      this.selectedProductIds.add(product.id);
+    }
+  }
+
+  onOpenProductDetails(product: Product) {
+    this.openProductDetail(product);
+  }
+
+  getSelectedCount(): number {
+    return this.selectedProductIds.size;
+  }
+
+  onAddSelectedToCart() {
+    const selectedProducts = this.allProducts.filter(p => this.selectedProductIds.has(p.id));
+    selectedProducts.forEach(product => {
+      this.cartService.addItem(product, 1);
+    });
+    this.selectedProductIds.clear();
+  }
+
+  onAddSelectedToFavorite() {
+    // TODO: Implement favorite functionality
+    console.log('Add to favorite:', Array.from(this.selectedProductIds));
+  }
+
+  onClearSelection() {
+    this.selectedProductIds.clear();
   }
 }

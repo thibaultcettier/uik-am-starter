@@ -1,0 +1,15 @@
+<div class="app-selection-bar__container">
+  <button mat-button class="app-selection-bar__count" (click)="onClearSelection()">
+    <mat-icon>remove</mat-icon>
+    <span>{{ selectedCount }} selected</span>
+  </button>
+  <button mat-raised-button class="app-selection-bar__add-cart" (click)="onAddToCart()">
+    <mat-icon>shopping_cart</mat-icon>
+    <span>Add to cart</span>
+  </button>
+  <button mat-button class="app-selection-bar__add-favorite" (click)="onAddToFavorite()">
+    <mat-icon>star</mat-icon>
+    <span>Add to favorite</span>
+  </button>
+</div>
+

@@ -1,7 +1,9 @@
-import {Component, HostBinding, Input, inject} from '@angular/core';
+import {Component, HostBinding, Input, Output, EventEmitter, inject} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatCheckboxModule, MatCheckboxChange} from '@angular/material/checkbox';
 import {Product} from '../../../interfaces/IProduct';
 import {CartService} from '../../services/cart.service';
 
@@ -11,6 +13,8 @@ import {CartService} from '../../services/cart.service';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
+    MatCheckboxModule,
   ],
   templateUrl: './card.component.html'
 })
@@ -22,6 +26,10 @@ export class CardComponent {
   @Input() imageUrl: string = '';
   @Input() showDemoOverlay: boolean = false;
   @Input() product?: Product;
+  @Input() isSelected: boolean = false;
+
+  @Output() selectProduct = new EventEmitter<void>();
+  @Output() openDetails = new EventEmitter<void>();
 
   private readonly cartService = inject(CartService);
 
@@ -38,12 +46,30 @@ export class CardComponent {
 
   onInfo(event: MouseEvent) {
     event.stopPropagation();
-    console.log('Info:', this.productId);
+    this.openDetails.emit();
   }
 
   onMoreOptions(event: MouseEvent) {
     event.stopPropagation();
-    console.log('More options:', this.productId);
+    // Menu will be handled by mat-menu
+  }
+
+  onSelectThisProduct(event?: MouseEvent) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.selectProduct.emit();
+  }
+
+  onOpenDetails(event?: MouseEvent) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.openDetails.emit();
+  }
+
+  onCheckboxChange(event: MatCheckboxChange) {
+    this.selectProduct.emit();
   }
 
   private ensureProduct(): Product {

@@ -1,5 +1,14 @@
 <app-page-layout headerTitle="ZBL Industries" headerSubtitle="Product catalog">
   <div class="app-catalog__container">
+    @if (getSelectedCount() >= 2) {
+      <app-selection-bar
+        [selectedCount]="getSelectedCount()"
+        (clearSelection)="onClearSelection()"
+        (addToCart)="onAddSelectedToCart()"
+        (addToFavorite)="onAddSelectedToFavorite()">
+      </app-selection-bar>
+    }
+
       <div class="app-catalog__controls">
         <div class="app-catalog__controls-left">
           <mat-form-field appearance="outline" class="app-catalog__search-field">
@@ -68,7 +77,10 @@
                 [imageUrl]="getImageUrl(product.image)"
                 [product]="product"
                 [showDemoOverlay]="true"
-                (click)="openProductDetail(product)">
+                [isSelected]="isProductSelected(product.id)"
+                (click)="openProductDetail(product)"
+                (selectProduct)="onSelectProduct(product)"
+                (openDetails)="onOpenProductDetails(product)">
               </app-card>
             }
           </div>
