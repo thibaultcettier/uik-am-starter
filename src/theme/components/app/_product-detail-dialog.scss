@@ -3,7 +3,7 @@
 .product-detail {
   display: flex;
   gap: 2rem;
-  padding:5px;
+  padding: 25px;
 }
 
 .product-detail__image {
@@ -76,7 +76,6 @@
 
 .product-detail__spec {
   display: flex;
-  justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
 }
@@ -104,13 +103,6 @@
 
 .product-detail__offer {
   margin-top: 1rem;
-}
-
-.product-detail__offer-button {
-  text-transform: none;
-  font-weight: 600;
-  border-color: vars.$error-red;
-  color: vars.$error-red;
 }
 
 .product-detail__actions {
