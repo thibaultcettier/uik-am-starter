@@ -55,7 +55,7 @@ export class BasketComponent {
   }
 
   getImageUrl(imagePath: string): string {
-    return `${imagePath}`;
+    return `/api${imagePath}`;
   }
 }
 

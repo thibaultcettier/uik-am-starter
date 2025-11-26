@@ -1,3 +1,5 @@
+@use "./variables" as vars;
+
 .product-detail {
   display: flex;
   gap: 2rem;
@@ -6,9 +8,9 @@
 
 .product-detail__image {
   flex: 1 1 50%;
-  border-radius: 1rem;
+  border-radius: vars.$radius-md;
   overflow: hidden;
-  background: #f3f4f6;
+  background: vars.$image-bg;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -49,11 +51,11 @@
 }
 
 .product-detail__discount {
-  color: #dc2626;
+  color: vars.$error-red;
 }
 
 .product-detail__price {
-  color: #4328eb;
+  color: vars.$price-blue;
   font-weight: 600;
 }
 
@@ -63,7 +65,7 @@
 }
 
 .product-detail__description {
-  color: rgba(17, 17, 17, 0.8);
+  color: vars.$text-secondary;
 }
 
 .product-detail__specs {
@@ -80,12 +82,12 @@
 }
 
 .product-detail__spec-label {
-  color: rgba(17, 17, 17, 1);
+  color: vars.$text-dark;
   font-weight: 600;
 }
 
 .product-detail__spec-value {
-  color: rgba(17, 17, 17, 0.8);
+  color: vars.$text-secondary;
   text-align: right;
 }
 
@@ -96,7 +98,7 @@
 }
 
 .product-detail__warranty {
-  color: #4328eb;
+  color: vars.$price-blue;
   margin-top: 0.5rem;
 }
 
@@ -107,8 +109,8 @@
 .product-detail__offer-button {
   text-transform: none;
   font-weight: 600;
-  border-color: #dc2626;
-  color: #dc2626;
+  border-color: vars.$error-red;
+  color: vars.$error-red;
 }
 
 .product-detail__actions {

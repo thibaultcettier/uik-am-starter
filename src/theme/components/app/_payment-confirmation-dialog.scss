@@ -1,4 +1,5 @@
 @use "@visiativ/uik-core/theme/variables/colors" as colors;
+@use "./variables" as vars;
 
 .app-payment-confirmation-dialog {
   padding: 3rem 2rem;
@@ -18,11 +19,11 @@
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background-color: #10b981;
+    background-color: vars.$success-green;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: vars.$white-bg;
 
     mat-icon {
       font-size: 40px;

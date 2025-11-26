@@ -1,4 +1,5 @@
 @use "@visiativ/uik-core/theme/variables/colors" as colors;
+@use "./variables" as vars;
 
 .app-card {
   display: block;
@@ -13,9 +14,9 @@
     width: 100%;
     height: 100%;
     box-sizing: border-box;
-    border-radius: 1rem;
-    background: #fff;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    border-radius: vars.$radius-md;
+    background: vars.$white-bg;
+    box-shadow: 0 8px 20px vars.$shadow-default;
   }
 
   &__image-wrapper {
@@ -23,7 +24,7 @@
     width: 100%;
     height: 230px;
     flex-shrink: 0;
-    background-color: #fff;
+    background-color: vars.$white-bg;
     overflow: hidden;
   }
 
@@ -46,16 +47,16 @@
 
     ::ng-deep {
       .mat-checkbox-frame {
-        border-color: #951CFF;
+        border-color: vars.$primary-purple;
         border-width: 2px;
       }
 
       .mat-checkbox-background {
-        background-color: #951CFF;
+        background-color: vars.$primary-purple;
       }
 
       .mat-checkbox-checkmark-path {
-        stroke: white !important;
+        stroke: vars.$white-bg !important;
       }
 
       .mat-checkbox-layout {
@@ -89,7 +90,7 @@
     top: 50%;
     right: 0;
     width: 50%;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: vars.$overlay-dark;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,7 +102,7 @@
     flex-direction: column;
     align-items: flex-end;
     text-transform: uppercase;
-    color: #fff;
+    color: vars.$white-bg;
     gap: 0.2rem;
     left:0;
   }
@@ -138,7 +139,7 @@
 
     .app-card__product-id {
       margin: 0;
-      color: rgba(0, 0, 0, 0.6);
+      color: vars.$text-low;
     }
   }
 
@@ -155,7 +156,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #951cff; // TODO: Use theme variable
+    color: vars.$primary-purple;
   }
 
   &__action-icon-img {
@@ -165,9 +166,9 @@
   }
 
   &--ghost {
-    border-radius: 1rem;
-    background: #fff;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    border-radius: vars.$radius-md;
+    background: vars.$white-bg;
+    box-shadow: 0 8px 20px vars.$shadow-default;
     overflow: hidden;
 
     uik-ghosts {

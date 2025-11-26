@@ -1,0 +1,38 @@
+@use "@visiativ/uik-core/theme/variables/colors" as colors;
+
+// Color variables
+$white-bg: #{colors.$white-bg};
+$primary-purple: #951CFF;
+$primary-purple-light: #BF56FB;
+$primary-purple-alpha: #951cff1f;
+$filter-bg: #eeeff8;
+$image-bg: #f3f4f6;
+$error-red: #dc2626;
+$price-blue: #4328eb;
+$success-green: #10b981;
+
+// Text colors
+$text-dark: #111;
+$text-secondary: rgba(17, 17, 17, 0.8);
+$text-tertiary: rgba(17, 17, 17, 0.7);
+$text-muted: rgba(17, 17, 17, 0.6);
+$text-low: rgba(0, 0, 0, 0.6);
+$text-border: rgba(0, 0, 0, 0.12);
+
+// Shadow colors
+$shadow-default: rgba(15, 23, 42, 0.08);
+$shadow-purple: rgba(149, 28, 255, 0.2);
+
+// Border colors
+$border-dashed: rgba(0, 0, 0, 0.1);
+$overlay-dark: rgba(0, 0, 0, 0.6);
+
+// Border radius
+$radius-sm: 0.75rem;
+$radius-md: 1rem;
+$radius-lg: 15px;
+$radius-pill: 999px;
+
+// Spacing
+$spacing-standard: 1.5rem;
+

@@ -1,19 +1,20 @@
 @use "@visiativ/uik-core/theme/variables/colors" as colors;
+@use "./variables" as vars;
 
 .app-selection-bar {
   &__container {
     display: flex;
     align-items: center;
     gap: 1rem;
-    background-color: #951cff1f;
-    padding: 0.75rem 1.5rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 20px rgba(149, 28, 255, 0.2);
-    color:#951cff;
+    background-color: vars.$primary-purple-alpha;
+    padding: 0.75rem vars.$spacing-standard;
+    border-radius: vars.$radius-lg;
+    box-shadow: 0 8px 20px vars.$shadow-purple;
+    color: vars.$primary-purple;
 
     .mat-mdc-raised-button:not(:disabled){
-        background-color:#951cff;
-        color:white;
+        background-color: vars.$primary-purple;
+        color: vars.$white-bg;
     }
   }
 }

@@ -1,15 +1,29 @@
 @use "@visiativ/uik-core/theme/variables/colors" as colors;
+@use "./variables" as vars;
 
 .app-catalog {
-  --standard-gap: 1.5rem;
+  // Layout variables
+  --standard-gap: #{vars.$spacing-standard};
   --card-height: 400px;
+  
+  // Color variables
+  --filter-bg: #{vars.$filter-bg};
+  --white-bg: #{vars.$white-bg};
+  --shadow-color: #{vars.$shadow-default};
+  --border-dashed-color: #{vars.$border-dashed};
+  
+  // Border radius variables
+  --controls-radius: #{vars.$radius-lg};
+  --filter-radius: #{vars.$radius-pill};
+  --card-radius: #{vars.$radius-sm};
+  --paginator-radius: #{vars.$radius-md};
 
   &__container {
-    padding: 1.5rem;
+    padding: var(--standard-gap);
     display: flex;
     flex-direction: column;
     flex: 1;
-    gap: 1.5rem;
+    gap: var(--standard-gap);
     background-color: colors.$grey-bg;
     position: relative;
     min-height: -webkit-fill-available;
@@ -22,8 +36,8 @@
     justify-content: space-between;
     gap: 1rem;
     flex-wrap: wrap;
-    background-color: white;
-    border-radius: 15px;
+    background-color: var(--white-bg);
+    border-radius: var(--controls-radius);
     padding: 5px;
   }
 
@@ -32,31 +46,20 @@
     align-items: center;
     gap: 1rem;
     flex-wrap: wrap;
-
-    mat-form-field{
-      border-color:#eeeff8;
-      background-color: #eeeff8;;
-      border-radius: 15px;
-      padding: 5px;
-    }
-  }
-
-  &__filter-btn {
-    border-radius: 999px;
-    text-transform: none;
-    font-weight: 600;
-    padding-inline: 1.25rem;
-    background: #fff;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
-
-    mat-icon {
-      font-size: 20px;
-      margin-right: 0.5rem;
-    }
   }
 
   &__search-field {
     width: min(360px, 100%);
+
+    ::ng-deep {
+      .mat-mdc-form-field {
+        background-color: var(--filter-bg);
+        border-radius: var(--filter-radius);
+        padding: 0;
+        border: none;
+        box-shadow: none;
+      }
+    }
   }
 
   &__controls-right {
@@ -67,7 +70,7 @@
 
     mat-button-toggle-group{
       height: auto;
-      background-color: #eeeff8;
+      background-color: var(--filter-bg);
     }
   }
 
@@ -77,8 +80,8 @@
   }
 
   &__view-toggle {
-    background: #fff;
-    border-radius: 999px;
+    background: var(--white-bg);
+    border-radius: var(--filter-radius);
 
     .mat-button-toggle-button {
       padding: 0.2rem 0.75rem;
@@ -94,8 +97,8 @@
     top: 0.75rem;
     left: 0.75rem;
     z-index: 2;
-    background: #fff;
-    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+    background: var(--white-bg);
+    box-shadow: 0 8px 20px var(--shadow-color);
   }
 
   &__grid-wrapper {
@@ -103,7 +106,7 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
-    padding-top: 1.5rem;
+    padding-top: var(--standard-gap);
   }
 
   &__grid {
@@ -123,9 +126,9 @@
     font-weight: 600;
     color: colors.$text-low;
     min-height: 240px;
-    border: 1px dashed rgba(0, 0, 0, 0.1);
-    border-radius: 0.75rem;
-    background-color: #fff;
+    border: 1px dashed var(--border-dashed-color);
+    border-radius: var(--card-radius);
+    background-color: var(--white-bg);
   }
 
   &__paginator-container {
@@ -135,10 +138,10 @@
 
   &__paginator {
     width: 100%;
-    border-radius: 1rem;
-    background: #fff;
-    padding: 0 1.5rem;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    border-radius: var(--paginator-radius);
+    background: var(--white-bg);
+    padding: 0 var(--standard-gap);
+    box-shadow: 0 8px 24px var(--shadow-color);
   }
 
   @media (max-width: 1400px) {
